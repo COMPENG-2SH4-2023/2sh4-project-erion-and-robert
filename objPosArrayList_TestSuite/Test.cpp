@@ -353,9 +353,6 @@ void testRemoveTail_5Element()
 	// The destructor will be called automatically for stack-allocated objects
 }
 
-
-
-
 bool runAllTests(int argc, char const *argv[]) {
 	cute::suite s;
 	
@@ -368,6 +365,8 @@ bool runAllTests(int argc, char const *argv[]) {
 	s.push_back(CUTE(testRemoveHead_5Element));
 	s.push_back(CUTE(testRemoveTail_1Element));
 	s.push_back(CUTE(testRemoveTail_5Element));
+
+
 	
 
 

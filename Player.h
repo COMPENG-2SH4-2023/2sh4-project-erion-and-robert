@@ -16,15 +16,32 @@ class Player
     public:
         enum Dir {UP, DOWN, LEFT, RIGHT, STOP};  // This is the direction state
 
-        Player(GameMechs* thisGMRef);
+        Player(GameMechs* thisGMRef); //modifying constructor
         ~Player();
 
-        void getPlayerPos(objPos &returnPos); // Upgrade this in iteration 3.
+        objPosArrayList* getPlayerPos(); // Upgrade this in iteration 3.
         void updatePlayerDir();
+
         void movePlayer();
+        //need more actions in here:
+        // after inserting the head but before removing the tail
+        // - check if new head position collides with food
+        // - if yes, increment the score in GM, generate new food, and do not remove tail
+        // - otherwise, remove the tail and move on 
+
+
+        //lastly, add the self collision check. 
+        //- if self-collided 
+        // set loseFlag and exitFlag both to true (through GM)
+        // this will break the program loop and end the game 
+
+        //- if ending, you need to differentiate the end game state 
+        // LOST - display LOST message
+        // otherwise, display ENDGAME message only. 
+
 
     private:
-        objPos playerPos;   // Upgrade this in iteration 3.       
+        objPosArrayList *playerPosList;   // Upgrade this in iteration 3.       
         enum Dir myDir;
 
         // Need a reference to the Main Game Mechanisms

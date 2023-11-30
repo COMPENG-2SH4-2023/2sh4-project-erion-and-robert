@@ -17,8 +17,7 @@ class objPos
         void getObjPos(objPos &returnPos);
         char getSymbol();
 
-        bool isPosEqual(const objPos* refPos);
-        
+        bool isPosEqual(const objPos* refPos); 
         char getSymbolIfPosEqual(const objPos* refPos);
 };
 
