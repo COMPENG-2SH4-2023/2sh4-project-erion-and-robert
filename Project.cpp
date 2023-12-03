@@ -118,7 +118,7 @@ void DrawScreen(void)
 
     MacUILib_printf("\nBoard Size: %dx%d \nScore: %d", myGM->getBoardSizeX(), myGM->getBoardSizeY(), myGM->getScore());
     MacUILib_printf("\nFood Pos: <%d, %d> + %c\n", tempFoodPos.x, tempFoodPos.y, tempFoodPos.symbol);
-    myGM->getLoseFlagStatus() ? (MacUILib_printf("You Lost!\n"), myGM->setExitTrue()) : void();
+    // myGM->getLoseFlagStatus() ? (MacUILib_printf("You Lost!\n"), myGM->setExitTrue()) : void();
 
 }
 
@@ -130,6 +130,7 @@ void LoopDelay(void)
 void CleanUp(void)
 {
     MacUILib_clearScreen();    
+    myGM->getLoseFlagStatus() ? (MacUILib_printf("You Lost! Final Score: %d\n", myGM->getScore())) : (MacUILib_printf("Game Exited\n"));
     MacUILib_uninit();
     //removing the heap instances
     delete myGM;

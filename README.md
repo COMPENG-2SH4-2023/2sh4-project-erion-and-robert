@@ -4,8 +4,8 @@ Project
 You must watch the briefing video and read through the manual to engage in the development activities.
 
 
-Section: [L06][]
+Section: [L06][L02]
 
-MacID: [kekae][]
+MacID: [kekae][rakanovr]
 
-StudentID: [400435050][]
+StudentID: [400435050][400459499]

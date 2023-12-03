@@ -134,6 +134,7 @@ void GameMechs::generateFood(objPos blockOff)
         }
         break;
     }
+    delete playerPosList;
 }
 
 void GameMechs::getFoodPos(objPos &returnPos)
