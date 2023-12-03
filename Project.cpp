@@ -58,7 +58,12 @@ void RunLogic(void)
 {  
     myPlayer->updatePlayerDir();
     myPlayer->movePlayer();
-
+    if (myPlayer->checkSelfCollision())
+    {
+        myGM->setLoseFlag();
+        myGM->setExitTrue();
+        return;
+    }
     myGM->clearInput();
 }
 

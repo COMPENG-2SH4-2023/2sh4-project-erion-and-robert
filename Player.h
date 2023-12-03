@@ -28,7 +28,9 @@ class Player
         // - check if new head position collides with food
         // - if yes, increment the score in GM, generate new food, and do not remove tail
         // - otherwise, remove the tail and move on 
-
+        bool checkFoodConsumption();
+        bool checkSelfCollision();
+        void increasePlayerLength();
 
         //lastly, add the self collision check. 
         //- if self-collided 
