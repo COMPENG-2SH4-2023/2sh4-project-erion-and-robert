@@ -114,6 +114,8 @@ void DrawScreen(void)
         }
         MacUILib_printf("\n");
     }
+    MacUILib_printf("Score: %d\n", myGM->getScore()); 
+    MacUILib_printf("===== DEBUG MESSAGES =====\n");
     MacUILib_printf("Player Positions:\n");
     for (int l = 0; l < playerBody->getSize(); l++)
     {
@@ -121,10 +123,8 @@ void DrawScreen(void)
         MacUILib_printf("<%d, %d> ", tempBody.x, tempBody.y);
     }
 
-    MacUILib_printf("\nBoard Size: %dx%d \nScore: %d", myGM->getBoardSizeX(), myGM->getBoardSizeY(), myGM->getScore());
+    MacUILib_printf("\nBoard Size: %dx%d", myGM->getBoardSizeX(), myGM->getBoardSizeY());
     MacUILib_printf("\nFood Pos: <%d, %d> + %c\n", tempFoodPos.x, tempFoodPos.y, tempFoodPos.symbol);
-    // myGM->getLoseFlagStatus() ? (MacUILib_printf("You Lost!\n"), myGM->setExitTrue()) : void();
-
 }
 
 void LoopDelay(void)
