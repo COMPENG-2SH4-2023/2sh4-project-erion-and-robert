@@ -26,7 +26,6 @@ int objPosArrayList::getSize()
 
 void objPosArrayList::insertHead(objPos thisPos)
 {
-    //still need error check - what if listSize is capacity
     if (listSize == ARRAY_MAX_CAP)
     {
         return; 
@@ -59,7 +58,6 @@ void objPosArrayList::removeHead()
 
 void objPosArrayList::removeTail()
 {
-
     listSize--;
 }
 

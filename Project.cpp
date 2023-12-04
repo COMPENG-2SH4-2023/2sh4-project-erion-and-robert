@@ -5,7 +5,7 @@
 #include "GameMechs.h"
 #include "Player.h"
 
-using namespace std;
+//using namespace std;
 
 #define DELAY_CONST 100000
 
@@ -21,7 +21,6 @@ void CleanUp(void);
 
 int main(void)
 {
-
     Initialize();
 
     while(myGM->getExitFlagStatus() == false)  
@@ -33,7 +32,6 @@ int main(void)
     }
 
     CleanUp();
-
 }
 
 void Initialize(void)
@@ -45,7 +43,7 @@ void Initialize(void)
     myPlayer = new Player(myGM);
     srand(time(NULL)); 
     
-    objPos tempPos{-1, -1, 'o'}; //makeshift setup so we do not need to touch generate item yet. it has to be done still
+    objPos tempPos;
     myGM->generateFood(tempPos);
 }
 
@@ -71,7 +69,7 @@ void DrawScreen(void)
 {
     MacUILib_clearScreen();  
 
-    bool drawn;
+    bool drawn; 
 
     objPosArrayList* playerBody = myPlayer->getPlayerPos();
     objPos tempBody;
@@ -79,12 +77,14 @@ void DrawScreen(void)
     objPos tempFoodPos;
     myGM->getFoodPos(tempFoodPos);
 
+    //creating a for loop to iterate through Y values
     for (int i = 0; i < myGM->getBoardSizeY(); i++) 
     {   
+        //creating a for loop to iterate through X values
         for (int j = 0; j < myGM->getBoardSizeX(); j++) 
         {
             drawn = false;
-
+            //creating a for loop to print each of the elements in the snake
             for (int k = 0; k < playerBody->getSize(); k++)
             {
                 playerBody->getElement(tempBody, k);
@@ -95,18 +95,22 @@ void DrawScreen(void)
                     break;
                 }
             }
+            //coninuing if we've drawn the player
             if (drawn)
             {
                 continue;
             }
+            //printing the border
             if (i == 0 || i == myGM->getBoardSizeY() - 1 || j == 0 || j == myGM->getBoardSizeX() - 1)
             {
                 MacUILib_printf("%c",'#');
             } 
+            //printing the food pos
             else if (i == tempFoodPos.y &&  j == tempFoodPos.x)
             {
                 MacUILib_printf("%c", tempFoodPos.symbol);
             }
+            //printing blank spaces
             else
             {
                 MacUILib_printf("%c",' ');
@@ -114,7 +118,9 @@ void DrawScreen(void)
         }
         MacUILib_printf("\n");
     }
+    //printing the score
     MacUILib_printf("Score: %d\n", myGM->getScore()); 
+    //printing debugging messages
     MacUILib_printf("===== DEBUG MESSAGES =====\n");
     MacUILib_printf("Player Positions:\n");
     for (int l = 0; l < playerBody->getSize(); l++)
@@ -134,7 +140,8 @@ void LoopDelay(void)
 
 void CleanUp(void)
 {
-    MacUILib_clearScreen();    
+    MacUILib_clearScreen();   
+    //printing either losing screen or exit screen 
     myGM->getLoseFlagStatus() ? (MacUILib_printf("You Lost! Final Score: %d\n", myGM->getScore())) : (MacUILib_printf("Game Exited\n"));
     MacUILib_uninit();
     //removing the heap instances
